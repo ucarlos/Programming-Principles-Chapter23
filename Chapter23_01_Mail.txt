@@ -1,0 +1,29 @@
+----
+From: John Doe <jdoe@machine.example>
+To: Mary Smith <mary@example.net>
+Subject: Example01: The Beginning
+Date: Tue, Jan 5 14:29:18 EST 2021
+Get the email file example to run; test it using a larger file of your own
+creation. Be sure to include messages that are likely to trigger errors, such
+as messages with two address lines, several messages with the same ad-
+dress and/or same subject, and empty messages.
+----
+----
+----
+From : John Doe <jow@machine.examle>
+To:L Mary Smitch <mary@example.net>
+Subject: asdaksdalsd
+Whard sals uyo
+      	   ----
+From: John Doe <jdoe@machine.example>
+To: Mary Smith <mary@example.net>
+Subject: Example01: The Beginning	   
+Date: Fri, 21 Nov 1997 09:55:06 –0600
+Please respond
+----
+From: Joe Q. Public <john.q.public@example.com>
+To: Mary Smith <@machine.tld:mary@example.net>, , jdoe@test .example
+Date: Tue, 1 Jul 2003 10:52:37 +0200
+Message–ID: <5678.21– Nov–1997@example.com>
+Hi everyone.
+----

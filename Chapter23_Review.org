@@ -1,0 +1,82 @@
+#+title: Chapter 23 Review
+#+author: Ulysses Carlos
+#+date: <2021-01-04 Mon>
+#+OPTIONS: toc:nil
+#+latex_class_options: [12pt]
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{mathpazo}
+#+LaTeX_HEADER: \linespread{1.05}
+#+LaTeX_HEADER: \usepackage[scaled]{helvet}
+#+LaTeX_HEADER: \usepackage{courier}
+* Questions
+*NOTE: I had to change the regex because latex throws a fit about regex.*
+** Where do we find "text"?
+We can find text everywhere, such as in code, literature, etc.
+** What are the standard library facilities most frequently useful for text analysis?
++ *std::basic\textunderscore string (std::string for normal ASCII characters)*
++ *std::regex*
++ *std::stringstream*
++ *Associative containers (Such as std::map, std::multimap, std::unordered\textunderscore map)*
+** Does insert() add before or after its position (or iterator)?
+Insert adds before the iterator given to it. So for example, if we are inserting a character 'l' in the string "Hello", and we give insert an iterator to the character 'e', then the string becomes "Hlello".
+** What is Unicode?
+Unicode is a encoding system that assigns language glyphs a specific value that can be stored within 1 to 4 bytes. This allows every symbol in every human language to be represented properly without the need of multiple text encoding systems.
+** How do you convert to and from a string representation (to and from some other type)?
+In order to convert a *type T* to string, you would use a ostringstream and write to it using operator<< and then retrieve the string through ostringstream::str().
+** What is the difference between cin>>s and getline(cin,s) assuming s is a string ?
+*getline* retrieves the entirety of a line (Assuming a default line separator of "\textbackslash n" or whatever) and stores it into a string. Simply doing *cin >> s* stores a string separated by whitespace.
+** List the standard streams.
++ iostream
+  + istream
+  + ostream    
++ fstream
+  + ifstream
+  + ofstream  
++ stringstream
+  + istringstream
+  + ostringstream
+** What is the key of a map ? Give examples of useful key types.
+The key to a map an object for type specified as the first template argument used to create the map. For example, in a *map<string, int> object*, the key can be a object of type *string*. Several useful key types include strings, ints, Date objects, etc.
+** How do you iterate over the elements of a map?
+You can iterate through a map using its begin() and end() iterators in a regular for loop, or simply use a range-for loop.
+** What is the difference between a map and a multimap ? Which useful map operation is missing for multimap , and why?
+Multimaps allows for multiple duplicate keys to be inserted into the map. However, multimaps don't overload *operator[]* (In order to allow multiple duplicate keys), so you have to use insert() to insert into the multimap, and use *multimap::find()* or *multimap::equal\textunderscore range()* to find a key (or key range).
+** What operations are required for a forward iterator?
+A forward iterator requires that the iterator can read and write to whatever item it points to.
+** What is the difference between an empty field and a nonexistent field? Give two examples.
+An empty field is simply a field that exists, but is empty. Nonexistent fields don't exist. In a regex\textunderscore search is stored in a std::smatch object, a match index that returns a mismatch is printed as an empty string. Index past the size of smatch can be used, but it simply returns a unmatched sub-pattern.
+** Why do we need an escape character to express regular expressions?
+Some characters cannot be printed normally, such as forward slashes, double and single quotes, which can appear frequently in a regular expression.
+** How do you get a regular expression into a regex variable?
+Regular expressions can be stored in a string(ACII or Unicode) passed to a regex variable as a constructor argument, or the string can be passed directly.
+** What does *:alnum:+:space::digit:{4}* match? Give three examples. What string literal would you use to initialize a regex variable with that pattern?
++ The first :alnum:+ matches one or more alphanumerical characters
++ The :space: matches one whitespace character
++ The :digit:{4} matches exactly four digits
+
+In order to initialize a regex variable with a pattern, I would write the following
+string str = R"(\textbackslash w+\textbackslash s\textbackslash d{4}*)"
+** How (in a program) do you find out if a string is a valid regular expression?
+Regex objects throw an regex\textunderscore error if the string is invalid expression, which can be used to determine if the regular expression is valid.
+** What does *regex\textunderscore search()* do?
+regex\textunderscore search() searches a string if it contains a substring that matches a regex expression.
+** What does *regex\textunderscore match()* do?
+regex\textunderscore match() determines if a string matches a specified regex expression, returning true or false.
+** How do you represent the character dot ( . ) in a regular expression?
+You can represent the character through \textbackslash .
+** How do you represent the notion of “at least three” in a regular expression?
+You can represent the notation by writing *.{3,}*
+** Is 7 a *\textbackslash w* character? Is \textunderscore  (underscore)?
+Since \textbackslash w is the same as :alnum:, then the number 7 is a \textbackslash character. \textunderscore is not a alphabetical or numerical character, so it is not a \textbackslash w character.
+** What is the notation for an uppercase character?
+*\textbackslash s* denotes uppercase characters.
+** How do you specify your own character set?
+You can create a character set through [ ], placing whatever characters you want in that field. For example, if I want to make a character set contain lowercase and uppercase D, then the character set is [dD].
+** How do you extract the value of an integer field?
+The field can be stored as a string through the use of a stringstream.
+** How do you represent a floating-point number as a regular expression?
+I would represent it as *\textbackslash d+\textbackslash .\textbackslash d+$* for normal floating point numbers. However, if I would also like to represent floating-point numbers in scientific notation, then I would use *\textbackslash d+\textbackslash .\textbackslash d+([Ee]\textbackslash d+)?$* .
+** How do you extract a floating-point value from a match?
+You can extract the match by accessing the index in a smatch object
+** What is a sub-match? How do you access one?
+An submatch is a object that contains a vector of all the matches of a regular expression. It can be accessed through *operator[]* notation. Indices past the size of the smatch vector can be accessed, but it will always return an unmatched sub-pattern.
