@@ -1,0 +1,12 @@
+#+title: Programming: Principles and Practice Using C++ Chapter 23 
+#+author: Ulysses Carlos
+#+date: <2021-01-05 Tue>
+
+* Chapter 23
+This repository contains solutions to some problems from Bjarne Stroustrup's Principles of Programming Using C++ (2014). These solutions were written on a Linux machine, but should work on Windows and macOS since it only uses the standard C++ library.
+
+** Requirements
++ A C++ Compiler that supports C++11
++ CMake in order to build the project
+  
+
