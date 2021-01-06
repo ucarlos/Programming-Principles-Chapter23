@@ -62,18 +62,59 @@ int is_prefix(const std::string &s, const std::string &p) {
  * @param s String to store the name of the sender (If found)
  */
 bool find_from_addr(const Message *m, std::string &s) {
-	for (const auto &x : *m)
-		if (int n = is_prefix(x, "From: ")) {
-			s = string(x, n); return true;
+	// Initial Version
+	// for (const auto &x : *m)
+	// 	if (int n = is_prefix(x, "From: ")) {
+	// 		s = string(x, n); return true;
+	// 	}
+	// return false;
+
+	// Changed for Chapter23_03.cc
+	const static string pattern = R"(^From:.)";
+	static std::regex expression {pattern};
+
+	for (const auto &x: *m) {
+		smatch smatches;
+		if (regex_search(x, smatches, expression)) {
+			auto first_pos = smatches[0].str().length();
+			s = string(x, first_pos);
+			return true;
 		}
-	return false; 
+			
+	}
+
+	return false; // Not found
 }
 
 
 /**
  */
 std::string find_subject(const Message *m) {
-	for (const auto &x : *m)
-		if (int n = is_prefix(x, "Subject: ")) return string(x, n);
-	return std::string();
+	// Initial Version
+	// for (const auto &x : *m)
+	// 	if (int n = is_prefix(x, "Subject: ")) return string(x, n);
+	// return std::string();
+
+	// Changed for Chapter23_03.cc
+	const static string pattern = R"(^Subject:.)";
+	static std::regex expression {pattern};
+
+	for (const auto &x : *m) {
+		smatch matches;
+		if (regex_search(x, matches, expression)) {
+			// Return the rest of the string
+			auto first_pos = matches[0].str().length();
+			return string(x, first_pos);
+
+		}
+	}
+
+	return string(); // If not found	
+}
+
+std::ostream & operator<<(std::ostream &os, const Message &m) {
+	for (const auto &i : m)
+		os << i << "\n";
+
+	return os;
 }

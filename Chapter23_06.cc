@@ -1,12 +1,15 @@
 /*
  * -----------------------------------------------------------------------------
  * Created by Ulysses Carlos on 01/05/2021 at 09:37 PM
- * 
+ *
  * Chapter23_06.cc
  * Write a program that finds dates in a text file. Write out each line contain-
  * ing at least one date in the format line–number: line . Start with a regular
  * expression for a simple format, e.g., 12/24/2000, and test the program
  * with that. Then, add more formats.
+ *
+ * Incompatibilities:
+ *   * Color Codes may not work on non-linux machines
  * -----------------------------------------------------------------------------
  */
 

@@ -12,3 +12,5 @@ add_executable(Regex_Tester Regex_Tester.cc)
 # Problems
 add_executable(Chapter23_01 Chapter23_01.cc MailFile.cc)
 add_executable(Chapter23_02 Chapter23_02.cc MailFile.cc)
+add_executable(Chapter23_03 Chapter23_03.cc MailFile.cc)
+add_executable(Chapter23_04 Chapter23_04.cc MailFile.cc)

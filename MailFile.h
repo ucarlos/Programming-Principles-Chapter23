@@ -12,6 +12,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <regex>
 
 const std::string message_seperator = "----";
 
@@ -24,6 +25,7 @@ public:
 private:
 	Line_iter first;
 	Line_iter last;
+	friend std::ostream& operator<<(std::ostream &os, const Message &m);
 
 };
 

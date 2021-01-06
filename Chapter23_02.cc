@@ -43,7 +43,7 @@ int main(void) {
 		cerr << "Error: Could not populate multimap."
 			 << " Please make sure that the input file uses "
 			 << " the appropriate message separator \""
-			 << message_seperator << "\n";
+			 << message_seperator << "\"\n";
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -66,7 +66,7 @@ int main(void) {
 				 << "\"" << input << "\" :\n";
 
 			for (auto p = pp.first; p != pp.second; p++)
-				cout << "\t" << find_subject(p->second) << "\n";
+				cout << "\n\"\"\"\n" << *p->second << "\"\"\"\n";
 					   
 		}
 		cout << "Next Query: ";
