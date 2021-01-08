@@ -26,7 +26,7 @@ string string_to_lower(const string &str) {
 	return temp;
 }
 
-int main(void) {
+int main() {
 	Mail_File mail_file {input_file};
 
 	multimap<std::string, const Message *> the_map;
@@ -35,7 +35,7 @@ int main(void) {
 
 	for (const auto &i : mail_file) {
 		string s = find_subject(&i);
-		if (s != string())
+		if (!s.empty())
 			the_map.insert(make_pair(s, &i));		
 	}
 

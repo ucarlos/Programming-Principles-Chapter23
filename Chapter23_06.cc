@@ -43,7 +43,7 @@ int main(void) {
 	for (string line; getline(file, line); ) {
 		if (regex_match(line, expression))
 			cout <<"\033[1;34m" << "\"" << line
-				 << "\" matched the regex." << "\033[0m1" << "\n";
+				 << "\" matched the regex." << "\033[0m" << "\n";
 		else
 			cout << "\033[1;31m" << "\"" << line << "\" does not match."
 				 << "\033[0m" << "\n";
